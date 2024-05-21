@@ -1,6 +1,6 @@
 package org.example;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class FxDeal {
     private String dealId;
