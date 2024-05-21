@@ -3,13 +3,13 @@ package org.example;
 import java.security.Timestamp;
 
 public class FxDeal {
-    private long dealId;
+    private String dealId;
     private String fromCurrencyCode;
     private String toCurrencyCode;
     private Timestamp dealTimestamp;
     private double dealAmount;
 
-    public FxDeal(long dealId, String fromCurrencyCode, String toCurrencyCode, Timestamp dealTimestamp, double dealAmount) {
+    public FxDeal(String dealId, String fromCurrencyCode, String toCurrencyCode, Timestamp dealTimestamp, double dealAmount) {
         this.dealId = dealId;
         this.fromCurrencyCode = fromCurrencyCode;
         this.toCurrencyCode = toCurrencyCode;
@@ -17,11 +17,11 @@ public class FxDeal {
         this.dealAmount = dealAmount;
     }
 
-    public long getDealId() {
+    public String getDealId() {
         return dealId;
     }
 
-    public void setDealId(long dealId) {
+    public void setDealId(String dealId) {
         this.dealId = dealId;
     }
 
