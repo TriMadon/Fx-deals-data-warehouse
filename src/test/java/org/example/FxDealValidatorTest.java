@@ -12,7 +12,7 @@ class FxDealValidatorTest {
 
     @Test
     public void testValidFxDeal() {
-        FxDeal validFxDeal = new FxDeal("1", "USD", "EUR", Timestamp.from(Instant.now()), 1000.0);
+        FxDeal validFxDeal = new FxDeal("USD", "EUR", Timestamp.from(Instant.now()), 1000.0);
         ValidationResult result = validator.validate(validFxDeal);
         assertTrue(result.isValid());
         assertTrue(result.getErrors().isEmpty());
@@ -20,7 +20,7 @@ class FxDealValidatorTest {
 
     @Test
     public void testMissingFields() {
-        FxDeal invalidFxDeal = new FxDeal(null, "", "EUR", null, 1000.0);
+        FxDeal invalidFxDeal = new FxDeal( "", "EUR", null, 1000.0);
         ValidationResult result = validator.validate(invalidFxDeal);
         System.out.println(result.getErrors());
         assertFalse(result.isValid());
@@ -29,7 +29,7 @@ class FxDealValidatorTest {
 
     @Test
     public void testFxDealAmount() {
-        FxDeal invalidDealAmount = new FxDeal("1", "USD", "EUR", Timestamp.from(Instant.now()), 0);
+        FxDeal invalidDealAmount = new FxDeal("USD", "EUR", Timestamp.from(Instant.now()), 0);
         ValidationResult result = validator.validate(invalidDealAmount);
         assertFalse(result.isValid());
         assertFalse(result.getErrors().isEmpty());

@@ -3,26 +3,25 @@ package org.example;
 import java.sql.Timestamp;
 
 public class FxDeal {
-    private String dealId;
+    private Integer dealId;
     private String fromCurrencyCode;
     private String toCurrencyCode;
     private Timestamp dealTimestamp;
     private double dealAmount;
 
-    public FxDeal(String dealId, String fromCurrencyCode, String toCurrencyCode, Timestamp dealTimestamp, double dealAmount) {
-        this.dealId = dealId;
+    public FxDeal(String fromCurrencyCode, String toCurrencyCode, Timestamp dealTimestamp, double dealAmount) {
         this.fromCurrencyCode = fromCurrencyCode;
         this.toCurrencyCode = toCurrencyCode;
         this.dealTimestamp = dealTimestamp;
         this.dealAmount = dealAmount;
     }
 
-    public String getDealId() {
+    public Integer getDealId() {
         return dealId;
     }
 
     public void setDealId(String dealId) {
-        this.dealId = dealId;
+        this.dealId = Integer.valueOf(dealId);
     }
 
     public String getFromCurrencyCode() {

@@ -8,19 +8,12 @@ public class FxDealValidator {
     public ValidationResult validate(FxDeal fxDeal) {
         List<String> errors = new ArrayList<>();
 
-        validateDealId(fxDeal.getDealId(), errors);
         validateCurrencyCode(fxDeal.getFromCurrencyCode(), "From Currency Code", errors);
         validateCurrencyCode(fxDeal.getToCurrencyCode(), "To Currency Code", errors);
         validateDealTimestamp(fxDeal.getDealTimestamp(), errors);
         validateDealAmount(fxDeal.getDealAmount(), errors);
 
         return new ValidationResult(errors.isEmpty(), errors);
-    }
-
-    private void validateDealId(String dealId, List<String> errors) {
-        if (dealId == null || dealId.isEmpty()) {
-            errors.add("Deal ID is required.");
-        }
     }
 
     private void validateCurrencyCode(String currencyCode, String fieldName, List<String> errors) {
