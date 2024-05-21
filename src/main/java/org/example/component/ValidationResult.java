@@ -1,7 +1,10 @@
-package org.example;
+package org.example.component;
+
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ValidationResult {
     private boolean isValid;
     private List<String> errors;

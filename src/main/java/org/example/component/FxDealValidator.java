@@ -1,9 +1,13 @@
-package org.example;
+package org.example.component;
+
+import org.example.entity.FxDeal;
+import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FxDealValidator {
     public ValidationResult validate(FxDeal fxDeal) {
         List<String> errors = new ArrayList<>();

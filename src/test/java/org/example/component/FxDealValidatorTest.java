@@ -1,6 +1,10 @@
-package org.example;
+package org.example.component;
 
+import org.example.Fxdealsdatawarehouse.FxDealsDataWarehouseApplication;
+import org.example.entity.FxDeal;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Timestamp;
 import java.time.Instant;
