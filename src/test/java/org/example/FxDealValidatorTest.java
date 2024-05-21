@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Timestamp;
 import java.time.Instant;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class FxDealValidatorTest {
 
