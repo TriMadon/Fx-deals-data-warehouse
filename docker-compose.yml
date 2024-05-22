@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: fxdb
       POSTGRES_USER: fx_user
-      POSTGRES_PASSWORD: MuTaZ5656
+      POSTGRES_PASSWORD: fx_user
     ports:
       - "5432:5432"
 
@@ -18,6 +18,6 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://fxdb:5432/fxdb
       SPRING_DATASOURCE_USERNAME: fx_user
-      SPRING_DATASOURCE_PASSWORD: MuTaZ5656
+      SPRING_DATASOURCE_PASSWORD: fx_user
     ports:
       - "8080:8080"
