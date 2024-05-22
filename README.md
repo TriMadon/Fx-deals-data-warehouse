@@ -13,8 +13,8 @@ This project is a simple data warehouse to analyze foreign exchange (FX) deals. 
 
 ## To be Added
 
-- [] Documentation for each class.
-- [] More validations (e.g., prevent fx deal entries above current timestamp).
+- [ ] Documentation for each class.
+- [ ] More validations (e.g., prevent fx deal entries above current timestamp).
 
 ## Setup Instructions
 
