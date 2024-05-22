@@ -1,24 +1,20 @@
 # Fx-deals-data-warehouse
 
 ## Overview
-This project is a data warehouse for Bloomberg to analyze foreign exchange (FX) deals. It allows you to accept and persist deal details into a PostgreSQL database. The system ensures that no duplicate deals are imported, and all valid deals are saved in the database without allowing rollbacks.
+This project is a simple data warehouse to analyze foreign exchange (FX) deals. It allows you to accept and persist deal details into a PostgreSQL database.
 
 ## Features
 - **Deal Fields**: Each FX deal includes a unique ID, from currency ISO code, to currency ISO code, deal timestamp, and deal amount.
 - **Validation**: The system validates the deal structure for missing fields and correct formats.
-- **Deduplication**: Duplicate deals are not imported.
+- **Deduplication**: Duplicate deals are not imported (if all attributes except ID match).
 - **No Rollback**: All valid deals are saved without rollback.
 - **Database**: Uses PostgreSQL for data persistence.
-- **Logging**: Proper logging for operations and errors.
-- **Unit Testing**: Comprehensive unit tests with good coverage.
-- **Deployment**: Easily deployable using Docker and Docker Compose.
-- **Makefile**: Streamlined build and run process.
+- **Deployment**: Easily deployable using Docker, Docker Compose, and Makefile.
 
 ## Setup Instructions
 
 ### Prerequisites
 - **Docker**: Make sure Docker is installed on your system.
-- **Maven**: Ensure Maven is installed for building the project.
 
 ### Building and Running the Application
 
@@ -28,17 +24,79 @@ This project is a data warehouse for Bloomberg to analyze foreign exchange (FX) 
     cd fx-deals-data-warehouse
     ```
 
-2. **Build the Project**
+2. **Build and Run the Project**
     ```sh
-    make build
+    make
     ```
 
-3. **Run the Application**
-    ```sh
-    make run
-    ```
+   To only build the project:
+   ```
+   make build
+   ```
+
+   To only run the application:
+   ```
+   make up
+   ```
 
 ### Stopping the Application
 To stop the running application:
 ```sh
+make down
+```
+
+or
+
+```sh
 docker-compose down
+```
+
+## Usage
+
+### Adding a New FX Deal
+
+To add a new FX deal to the warehouse, send a POST request to ```http://localhost:8080/fxdeal/add``` with the a JSON payload like so:
+
+```json
+{
+    "fromCurrencyCode": "USD",
+    "toCurrencyCode": "EUR",
+    "dealTimestamp": "2023-05-21T12:34:56Z",
+    "dealAmount": 1000.0
+}
+```
+
+
+### Retrieving All FX Deals
+
+To retrieve all FX deals recorded in the data warehouse, send a GET request to ```http://localhost:8080/fxdeal/all``` (no need for an input in this case).
+
+```
+Note: You can do these HTTP interactions easily by using API interaction tools such as Postman.
+```
+
+
+## Project Structure
+
+- **src/main/java**: Contains the source code.
+- **src/test/java**: Contains the test code.
+- **Dockerfile**: Dockerfile for building the application image.
+- **docker-compose.yml**: Docker Compose configuration for setting up the PostgreSQL database and the application.
+- **Makefile**: Makefile to streamline building and running the application.
+- **schema.sql**: SQL file for setting up the database schema automatically upon firing the containers.
+
+
+## Logging and Error Handling
+
+- **Logging**: Implemented using SLF4J and Logback for structured logging.
+- **Error Handling**: Proper exception handling to ensure meaningful error messages are returned to the client.
+
+
+## Testing
+
+- **Unit Tests**: Comprehensive unit tests using JUnit and Mockito.
+- **Running Tests**: To run the tests, use the following command:
+    ```sh
+    mvn test
+    ```
+
