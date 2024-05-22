@@ -41,7 +41,7 @@ public class FxDealService {
             return fxDeals;
         } catch (Exception e) {
             logger.error("Error retrieving all deals", e);
-            throw new RuntimeException("Error retrieving all deals", e);
+            return null;
         }
     }
 }
