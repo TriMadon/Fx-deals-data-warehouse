@@ -1,5 +1,6 @@
-package org.example.entity;
+package org.example.Fxdealsdatawarehouse.fxdeal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 

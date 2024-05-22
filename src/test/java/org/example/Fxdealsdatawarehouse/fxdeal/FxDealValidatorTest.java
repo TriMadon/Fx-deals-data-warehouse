@@ -1,7 +1,5 @@
-package org.example.component;
+package org.example.Fxdealsdatawarehouse.fxdeal;
 
-import org.example.Fxdealsdatawarehouse.FxDealsDataWarehouseApplication;
-import org.example.entity.FxDeal;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Timestamp;
 import java.time.Instant;
 
-
+@SpringBootTest
 class FxDealValidatorTest {
 
     private final FxDealValidator validator = new FxDealValidator();

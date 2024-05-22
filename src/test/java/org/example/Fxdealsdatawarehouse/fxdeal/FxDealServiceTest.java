@@ -1,19 +1,17 @@
-package org.example.service;
+package org.example.Fxdealsdatawarehouse.fxdeal;
 
-import org.example.entity.FxDeal;
-import org.example.repository.FxDealRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Timestamp;
 
 import static org.mockito.Mockito.*;
 
+@SpringBootTest
 class FxDealServiceTest {
     @Mock
     private FxDealRepository fxDealRepository;
@@ -30,7 +28,7 @@ class FxDealServiceTest {
     void saveDeal_SuccessfulInsertion() {
         FxDeal fxDeal = new FxDeal("USD", "EUR", new Timestamp(System.currentTimeMillis()), 1000.0);
 
-        when(fxDealRepository.isDealExists(
+        when(fxDealRepository.existsByFromCurrencyCodeAndToCurrencyCodeAndDealTimestampAndDealAmount(
                 fxDeal.getFromCurrencyCode(), fxDeal.getToCurrencyCode(), fxDeal.getDealTimestamp(), fxDeal.getDealAmount())).thenReturn(false);
         when(fxDealRepository.save(fxDeal)).thenReturn(fxDeal);
 
@@ -43,7 +41,7 @@ class FxDealServiceTest {
     void saveDeal_DuplicateEntry() {
         FxDeal fxDeal = new FxDeal("USD", "EUR", new Timestamp(System.currentTimeMillis()), 1000.0);
 
-        when(fxDealRepository.isDealExists(
+        when(fxDealRepository.existsByFromCurrencyCodeAndToCurrencyCodeAndDealTimestampAndDealAmount(
                 fxDeal.getFromCurrencyCode(), fxDeal.getToCurrencyCode(), fxDeal.getDealTimestamp(), fxDeal.getDealAmount())).thenReturn(true);
 
         fxDealService.saveDeal(fxDeal);

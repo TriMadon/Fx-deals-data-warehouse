@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: fxdb
+    environment:
+      POSTGRES_DB: fxdb
+      POSTGRES_USER: fx_user
+      POSTGRES_PASSWORD: MuTaZ5656
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://fxdb:5432/fxdb
+      SPRING_DATASOURCE_USERNAME: fx_user
+      SPRING_DATASOURCE_PASSWORD: MuTaZ5656
+    ports:
+      - "8080:8080"

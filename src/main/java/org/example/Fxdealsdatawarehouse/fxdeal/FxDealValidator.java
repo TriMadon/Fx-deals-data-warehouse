@@ -1,6 +1,5 @@
-package org.example.component;
+package org.example.Fxdealsdatawarehouse.fxdeal;
 
-import org.example.entity.FxDeal;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -9,6 +8,7 @@ import java.util.List;
 
 @Component
 public class FxDealValidator {
+
     public ValidationResult validate(FxDeal fxDeal) {
         List<String> errors = new ArrayList<>();
 
@@ -19,6 +19,8 @@ public class FxDealValidator {
 
         return new ValidationResult(errors.isEmpty(), errors);
     }
+
+
 
     private void validateCurrencyCode(String currencyCode, String fieldName, List<String> errors) {
         String currencyCodeRegex = "^[A-Z]{3}$";
@@ -35,8 +37,10 @@ public class FxDealValidator {
         }
     }
 
-    private void validateDealAmount(double dealAmount, List<String> errors) {
-        if (dealAmount <= 0) {
+    private void validateDealAmount(Double dealAmount, List<String> errors) {
+        if (dealAmount == null) {
+            errors.add("Deal amount is required.");
+        } else if (dealAmount <= 0) {
             errors.add("Deal Amount must be a positive number.");
         }
     }
