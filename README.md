@@ -30,15 +30,9 @@ This project is a simple data warehouse to analyze foreign exchange (FX) deals. 
     make
     ```
 
-   To only build the project:
-   ```
-   make build
-   ```
+   To only build the project: ```make build```
 
-   To only run the application:
-   ```
-   make up
-   ```
+   To only run the application: ```make up```
 
 ### Stopping the Application
 To stop the running application:
@@ -60,10 +54,10 @@ To add a new FX deal to the warehouse, send a POST request to ```http://localhos
 
 ```json
 {
-    "fromCurrencyCode": "USD",
-    "toCurrencyCode": "EUR",
-    "dealTimestamp": "2023-05-21T12:34:56Z",
-    "dealAmount": 1000.0
+   "fromCurrencyCode": "USD",
+   "toCurrencyCode": "EUR",
+   "dealTimestamp": "2023-05-21T12:34:56Z",
+   "dealAmount": 1000.0
 }
 ```
 
