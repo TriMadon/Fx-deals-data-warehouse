@@ -10,6 +10,7 @@ This project is a simple data warehouse to analyze foreign exchange (FX) deals. 
 - **No Rollback**: All valid deals are saved without rollback.
 - **Database**: Uses PostgreSQL for data persistence.
 - **Deployment**: Easily deployable using Docker, Docker Compose, and Makefile.
+- **Logging**: Implemented using SLF4J and Logback for structured logging.
 
 ## Setup Instructions
 
@@ -75,28 +76,25 @@ To retrieve all FX deals recorded in the data warehouse, send a GET request to `
 Note: You can do these HTTP interactions easily by using API interaction tools such as Postman.
 ```
 
-
-## Project Structure
-
-- **src/main/java**: Contains the source code.
-- **src/test/java**: Contains the test code.
-- **Dockerfile**: Dockerfile for building the application image.
-- **docker-compose.yml**: Docker Compose configuration for setting up the PostgreSQL database and the application.
-- **Makefile**: Makefile to streamline building and running the application.
-- **schema.sql**: SQL file for setting up the database schema automatically upon firing the containers.
-
-
-## Logging and Error Handling
-
-- **Logging**: Implemented using SLF4J and Logback for structured logging.
-- **Error Handling**: Proper exception handling to ensure meaningful error messages are returned to the client.
-
-
 ## Testing
 
-- **Unit Tests**: Comprehensive unit tests using JUnit and Mockito.
+- **Unit Tests**: Written using JUnit and Mockito.
 - **Running Tests**: To run the tests, use the following command:
     ```sh
     mvn test
     ```
 
+
+## Project Structure
+
+### Main Classes
+
+- **FxDeal**: This class represents the FX deal entity with fields like deal ID, from currency code, to currency code, deal timestamp, and deal amount.
+- **FxDealController**: Handles the HTTP requests. It includes methods for adding a new FX deal and retrieving all FX deals.
+- **FxDealService**: This service class contains the business logic for processing FX deals, including saving new deals and retrieving all deals from the database.
+- **FxDealValidator**: Responsible for validating the FX deal data. It checks for missing fields and correct formats.
+- **FxDealRepository**: A JpaRepository to provide database access methods for FX deals.
+
+### Test Classes
+- **FxDealServiceTest**: Includes unit tests for the FxDealService class methods.
+- **FxDealControllerTest**: Includes unit tests for the FxDealController class methods.
